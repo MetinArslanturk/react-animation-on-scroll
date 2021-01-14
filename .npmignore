@@ -1,0 +1,7 @@
+build
+node_modules
+dist/**/demos
+dist/**/examples
+dist/**/__snapshots__
+dist/**/*.test.js
+dist/**/*.map
