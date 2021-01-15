@@ -5,6 +5,8 @@ This library is re-implementation of [dbramwell/react-animate-on-scroll](https:/
 Re-implemented the old one with react functional components in TypeScript. Also added animate.css@4.0+ support.
 Supports server-side rendering and TypeScript.
 
+## [Click to see Demo](https://www.metinarslanturk.com/react-animation-on-scroll)
+
 ## Install:
 
 ```
