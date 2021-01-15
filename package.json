@@ -1,7 +1,19 @@
 {
   "name": "react-animation-on-scroll",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
+  "keywords": [
+    "reactScrollEffects",
+    "react scroll",
+    "reactJS",
+    "react-component",
+    "animate",
+    "animation",
+    "on",
+    "scroll",
+    "reactAnimationOnScroll"
+  ],
+  "author": "MetinArslanturk",
   "main": "dist/js/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/js/index.d.ts",
@@ -13,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/MetinArslanturk/react-animation-on-scroll"
   },
+  "homepage": "https://www.metinarslanturk.com/react-animation-on-scroll",
   "files": [
     "dist"
   ],
