@@ -62,7 +62,7 @@
     });
     const delayedAnimationTORef = (0, _react.useRef)(undefined);
     const callbackTORef = (0, _react.useRef)(undefined);
-    const scrollableParentRef = (0, _react.useRef)(window);
+    const scrollableParentRef = (0, _react.useRef)(serverSide ? undefined : window);
     const getElementTop = (0, _react.useCallback)(elm => {
       let yPos = 0;
 

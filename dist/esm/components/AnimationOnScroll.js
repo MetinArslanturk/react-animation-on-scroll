@@ -32,7 +32,7 @@ export const AnimationOnScroll = ({
   });
   const delayedAnimationTORef = useRef(undefined);
   const callbackTORef = useRef(undefined);
-  const scrollableParentRef = useRef(window);
+  const scrollableParentRef = useRef(serverSide ? undefined : window);
   const getElementTop = useCallback(elm => {
     let yPos = 0;
 

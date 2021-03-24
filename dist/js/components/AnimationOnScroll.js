@@ -77,7 +77,7 @@ var AnimationOnScroll = function AnimationOnScroll(_ref) {
   });
   var delayedAnimationTORef = (0, _react.useRef)(undefined);
   var callbackTORef = (0, _react.useRef)(undefined);
-  var scrollableParentRef = (0, _react.useRef)(window);
+  var scrollableParentRef = (0, _react.useRef)(serverSide ? undefined : window);
   var getElementTop = (0, _react.useCallback)(function (elm) {
     var yPos = 0;
 
