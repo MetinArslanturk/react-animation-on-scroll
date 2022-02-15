@@ -10,6 +10,11 @@ import throttle from 'lodash.throttle';
 const animatedClass = 'animate__animated';
 const serverSide = typeof window === 'undefined';
 
+let scrollableParentRefInitialValue: any = undefined;
+if (!serverSide) {
+  scrollableParentRefInitialValue = window;
+}
+
 type Props = {
   offset?: number;
   duration?: number;
@@ -62,11 +67,9 @@ export const AnimationOnScroll = ({
 
   const delayedAnimationTORef: { current: any } = useRef(undefined);
   const callbackTORef: { current: any } = useRef(undefined);
-  const scrollableParentRef: { current: any } = useRef(
-    serverSide ? undefined : window
-  );
+  const scrollableParentRef: { current: any } = useRef(scrollableParentRefInitialValue);
 
-  const getElementTop = useCallback((elm) => {
+  const getElementTop = useCallback((elm: any) => {
     let yPos = 0;
     while (elm && elm.offsetTop !== undefined && elm.clientTop !== undefined) {
       yPos += elm.offsetTop + elm.clientTop;

@@ -32,6 +32,11 @@
 
   const animatedClass = 'animate__animated';
   const serverSide = typeof window === 'undefined';
+  let scrollableParentRefInitialValue = undefined;
+
+  if (!serverSide) {
+    scrollableParentRefInitialValue = window;
+  }
 
   const AnimationOnScroll = exports.AnimationOnScroll = ({
     offset = 150,
@@ -62,7 +67,7 @@
     });
     const delayedAnimationTORef = (0, _react.useRef)(undefined);
     const callbackTORef = (0, _react.useRef)(undefined);
-    const scrollableParentRef = (0, _react.useRef)(serverSide ? undefined : window);
+    const scrollableParentRef = (0, _react.useRef)(scrollableParentRefInitialValue);
     const getElementTop = (0, _react.useCallback)(elm => {
       let yPos = 0;
 

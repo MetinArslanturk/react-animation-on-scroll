@@ -33,6 +33,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var animatedClass = 'animate__animated';
 var serverSide = typeof window === 'undefined';
+var scrollableParentRefInitialValue = undefined;
+
+if (!serverSide) {
+  scrollableParentRefInitialValue = window;
+}
 
 var AnimationOnScroll = function AnimationOnScroll(_ref) {
   var _ref$offset = _ref.offset,
@@ -77,7 +82,7 @@ var AnimationOnScroll = function AnimationOnScroll(_ref) {
   });
   var delayedAnimationTORef = (0, _react.useRef)(undefined);
   var callbackTORef = (0, _react.useRef)(undefined);
-  var scrollableParentRef = (0, _react.useRef)(serverSide ? undefined : window);
+  var scrollableParentRef = (0, _react.useRef)(scrollableParentRefInitialValue);
   var getElementTop = (0, _react.useCallback)(function (elm) {
     var yPos = 0;
 

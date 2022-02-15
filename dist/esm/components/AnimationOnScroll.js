@@ -3,6 +3,12 @@ import React, { useMemo, useCallback, useState, useEffect, useRef } from 'react'
 import throttle from 'lodash.throttle';
 const animatedClass = 'animate__animated';
 const serverSide = typeof window === 'undefined';
+let scrollableParentRefInitialValue = undefined;
+
+if (!serverSide) {
+  scrollableParentRefInitialValue = window;
+}
+
 export const AnimationOnScroll = ({
   offset = 150,
   duration = 1,
@@ -32,7 +38,7 @@ export const AnimationOnScroll = ({
   });
   const delayedAnimationTORef = useRef(undefined);
   const callbackTORef = useRef(undefined);
-  const scrollableParentRef = useRef(serverSide ? undefined : window);
+  const scrollableParentRef = useRef(scrollableParentRefInitialValue);
   const getElementTop = useCallback(elm => {
     let yPos = 0;
 
