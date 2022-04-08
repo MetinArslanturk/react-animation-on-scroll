@@ -31,7 +31,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "lodash.throttle": "^4.1.1"
+    "lodash.throttle": "^4.1.1",
+    "prop-types": "^15.8.1"
   },
   "scripts": {
     "build:lib": "yarn build:babel && yarn build:types && node ./scripts/copyTS.js",
