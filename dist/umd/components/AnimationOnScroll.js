@@ -1,24 +1,22 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(["exports", "prop-types", "react", "lodash.throttle"], factory);
+    define(["exports", "react", "lodash.throttle"], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require("prop-types"), require("react"), require("lodash.throttle"));
+    factory(exports, require("react"), require("lodash.throttle"));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.propTypes, global.react, global.lodash);
+    factory(mod.exports, global.react, global.lodash);
     global.undefined = mod.exports;
   }
-})(this, function (exports, _propTypes, _react, _lodash) {
+})(this, function (exports, _react, _lodash) {
   "use strict";
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
   exports.AnimationOnScroll = undefined;
-
-  var _propTypes2 = _interopRequireDefault(_propTypes);
 
   var _react2 = _interopRequireDefault(_react);
 
@@ -236,23 +234,6 @@
       className: classNameProps ? `${classNameProps} ${classes}` : classes,
       style: Object.assign({}, style, styleProps)
     }, children);
-  };
-
-  AnimationOnScroll.propTypes = {
-    offset: _propTypes2.default.number,
-    duration: _propTypes2.default.number,
-    style: _propTypes2.default.any,
-    className: _propTypes2.default.string,
-    initiallyVisible: _propTypes2.default.bool,
-    animateIn: _propTypes2.default.string,
-    afterAnimatedIn: _propTypes2.default.any,
-    animateOut: _propTypes2.default.string,
-    delay: _propTypes2.default.number,
-    animatePreScroll: _propTypes2.default.bool,
-    afterAnimatedOut: _propTypes2.default.any,
-    scrollableParentSelector: _propTypes2.default.string,
-    animateOnce: _propTypes2.default.bool,
-    children: _propTypes2.default.any
   };
 });
 //# sourceMappingURL=AnimationOnScroll.js.map

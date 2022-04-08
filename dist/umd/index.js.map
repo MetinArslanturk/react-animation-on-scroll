@@ -1,1 +1,1 @@
-{"version":3,"sources":["../../src/index.tsx"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA","sourcesContent":["export * from './components';\n"],"file":"index.js"}
+{"version":3,"file":"index.js","mappings":";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA","names":[],"sources":["../../src/index.tsx"],"sourcesContent":["export * from './components';\n"]}

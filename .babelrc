@@ -1,9 +1,8 @@
 {
-  "presets": ["@babel/react"],
+  "presets": ["@babel/react", ["@babel/preset-typescript", {"allowNamespaces": true}]],
   "ignore": ["**/__snapshots__", "**/*.d.ts", "**/*.test.*"],
   "plugins": [
     "@babel/plugin-transform-typescript",
-    "babel-plugin-typescript-to-proptypes",
     "@babel/plugin-proposal-export-default-from",
     "@babel/proposal-class-properties",
     "@babel/proposal-object-rest-spread"

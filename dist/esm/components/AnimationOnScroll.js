@@ -1,4 +1,3 @@
-import _pt from "prop-types";
 import React, { useMemo, useCallback, useState, useEffect, useRef } from 'react';
 import throttle from 'lodash.throttle';
 const animatedClass = 'animate__animated';
@@ -207,21 +206,5 @@ export const AnimationOnScroll = ({
     className: classNameProps ? `${classNameProps} ${classes}` : classes,
     style: Object.assign({}, style, styleProps)
   }, children);
-};
-AnimationOnScroll.propTypes = {
-  offset: _pt.number,
-  duration: _pt.number,
-  style: _pt.any,
-  className: _pt.string,
-  initiallyVisible: _pt.bool,
-  animateIn: _pt.string,
-  afterAnimatedIn: _pt.any,
-  animateOut: _pt.string,
-  delay: _pt.number,
-  animatePreScroll: _pt.bool,
-  afterAnimatedOut: _pt.any,
-  scrollableParentSelector: _pt.string,
-  animateOnce: _pt.bool,
-  children: _pt.any
 };
 //# sourceMappingURL=AnimationOnScroll.js.map
