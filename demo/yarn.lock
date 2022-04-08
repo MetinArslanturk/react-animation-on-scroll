@@ -9007,10 +9007,10 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-animation-on-scroll@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/react-animation-on-scroll/-/react-animation-on-scroll-5.0.0.tgz#9e075961de8fabef7a0a1e3c8fb11c80dc965db8"
-  integrity sha512-/QPRc7Nb4KwHTxSRj7QbggeB93yjMYTHpaDTsdZkB4daZIb6oSwP7RR8RBR3tR49gRbOcSYxrgvLscxIIk/Xfg==
+react-animation-on-scroll@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/react-animation-on-scroll/-/react-animation-on-scroll-5.0.2.tgz#d2aca41738ed97fe16694a31fff3c9109defa5c5"
+  integrity sha512-5acWfhZkZ5mnuTPC2RC/f104wRqzBJNTMdFE/MSTNhNmlSbos9IoTy/MhZL363rSBNYI4Ndw0WTNwgxmwvfAkw==
   dependencies:
     lodash.throttle "^4.1.1"
 
