@@ -318,7 +318,7 @@ export const AnimationOnScroll = ({
     <div
       ref={node}
       className={classNameProps ? `${classNameProps} ${classes}` : classes}
-      style={Object.assign({}, style, styleProps)}
+      style={Object.assign({ display: 'contents' }, style, styleProps)}
     >
       {children}
     </div>
