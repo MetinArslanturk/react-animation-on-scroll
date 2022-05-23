@@ -1,14 +1,8 @@
-import React, {
-  useMemo,
-  useCallback,
-  useState,
-  useEffect,
-  useRef,
-} from 'react';
-import throttle from 'lodash.throttle';
+import React, { useMemo, useCallback, useState, useEffect, useRef } from "react";
+import throttle from "lodash.throttle";
 
-const animatedClass = 'animate__animated';
-const serverSide = typeof window === 'undefined';
+const animatedClass = "animate__animated";
+const serverSide = typeof window === "undefined";
 
 let scrollableParentRefInitialValue: any = undefined;
 if (!serverSide) {
@@ -30,6 +24,8 @@ type Props = {
   scrollableParentSelector?: string;
   animateOnce?: boolean;
   children?: any;
+  element?: React.ElementType;
+  elementProps?: Omit<React.HTMLAttributes<HTMLDivElement>, "children">;
 };
 
 type styleProp = {
@@ -41,7 +37,7 @@ export const AnimationOnScroll = ({
   offset = 150,
   duration = 1,
   style: styleProps,
-  className: classNameProps,
+  className: classNameProps = "",
   initiallyVisible = false,
   animateIn,
   afterAnimatedIn,
@@ -52,7 +48,11 @@ export const AnimationOnScroll = ({
   scrollableParentSelector,
   animateOnce = false,
   children,
+  element = "div",
+  elementProps,
 }: Props) => {
+  const { style: elementStyle, className: elementClassName = "", ...rest } = elementProps || {};
+
   const [classes, setClasses] = useState(animatedClass);
   const [style, setStyle] = useState<styleProp>({
     animationDuration: `${duration}s`,
@@ -154,8 +154,7 @@ export const AnimationOnScroll = ({
   );
 
   const getVisibility = useCallback(() => {
-    const elementTop =
-      getElementTop(node.current) - getElementTop(scrollableParentRef.current);
+    const elementTop = getElementTop(node.current) - getElementTop(scrollableParentRef.current);
     const elementBottom = elementTop + node.current.clientHeight;
 
     return {
@@ -165,10 +164,7 @@ export const AnimationOnScroll = ({
   }, [getElementTop, node, inViewport, onScreen, scrollableParentRef]);
 
   const visibilityHasChanged = useCallback((previousVis, currentVis) => {
-    return (
-      previousVis.inViewport !== currentVis.inViewport ||
-      previousVis.onScreen !== currentVis.onScreen
-    );
+    return previousVis.inViewport !== currentVis.inViewport || previousVis.onScreen !== currentVis.onScreen;
   }, []);
 
   const animate = useCallback(
@@ -220,16 +216,7 @@ export const AnimationOnScroll = ({
         }
       });
     },
-    [
-      animating,
-      animate,
-      animateIn,
-      duration,
-      afterAnimatedIn,
-      animateInTrigger,
-      animateOut,
-      getVisibility,
-    ]
+    [animating, animate, animateIn, duration, afterAnimatedIn, animateInTrigger, animateOut, getVisibility]
   );
 
   const handleScroll = useCallback(() => {
@@ -246,12 +233,7 @@ export const AnimationOnScroll = ({
           });
         } else if (currentVis.inViewport && animateIn) {
           animateInTrigger(afterAnimatedIn);
-        } else if (
-          currentVis.onScreen &&
-          visibility.inViewport &&
-          animateOut &&
-          node.current.style.opacity === '1'
-        ) {
+        } else if (currentVis.onScreen && visibility.inViewport && animateOut && node.current.style.opacity === "1") {
           animateOutTrigger(afterAnimatedOut);
         }
         visibilityRef.current = currentVis;
@@ -281,18 +263,11 @@ export const AnimationOnScroll = ({
   useEffect(() => {
     if (!serverSide) {
       const parentSelector = scrollableParentSelector;
-      scrollableParentRef.current = parentSelector
-        ? document.querySelector(parentSelector)
-        : window;
-      if (
-        scrollableParentRef.current &&
-        scrollableParentRef.current.addEventListener
-      ) {
-        scrollableParentRef.current.addEventListener('scroll', listener);
+      scrollableParentRef.current = parentSelector ? document.querySelector(parentSelector) : window;
+      if (scrollableParentRef.current && scrollableParentRef.current.addEventListener) {
+        scrollableParentRef.current.addEventListener("scroll", listener);
       } else {
-        console.warn(
-          `Cannot find element by locator: ${scrollableParentSelector}`
-        );
+        console.warn(`Cannot find element by locator: ${scrollableParentSelector}`);
       }
       if (animatePreScroll) {
         handleScroll();
@@ -302,25 +277,20 @@ export const AnimationOnScroll = ({
         clearTimeout(delayedAnimationTORef.current);
         clearTimeout(callbackTORef.current);
         if (window && window.removeEventListener) {
-          window.removeEventListener('scroll', listener);
+          window.removeEventListener("scroll", listener);
         }
       };
     }
-  }, [
-    handleScroll,
-    scrollableParentSelector,
-    scrollableParentRef,
-    listener,
-    animatePreScroll,
-  ]);
+  }, [handleScroll, scrollableParentSelector, scrollableParentRef, listener, animatePreScroll]);
 
-  return (
-    <div
-      ref={node}
-      className={classNameProps ? `${classNameProps} ${classes}` : classes}
-      style={Object.assign({}, style, styleProps)}
-    >
-      {children}
-    </div>
+  return React.createElement(
+    element,
+    {
+      ref: node,
+      className: `${classNameProps} ${classes} ${elementClassName}`,
+      style: Object.assign({}, style, styleProps, elementStyle),
+      ...rest,
+    },
+    children
   );
 };
