@@ -283,14 +283,11 @@ export const AnimationOnScroll = ({
     }
   }, [handleScroll, scrollableParentSelector, scrollableParentRef, listener, animatePreScroll]);
 
-  return React.createElement(
-    element,
-    {
+  return React.createElement(element, {
       ref: node,
       className: `${classNameProps} ${classes} ${elementClassName}`,
       style: Object.assign({}, style, styleProps, elementStyle),
+      children,
       ...rest,
-    },
-    children
-  );
+    });
 };
