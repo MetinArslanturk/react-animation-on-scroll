@@ -273,7 +273,7 @@ export const AnimationOnScroll = ({
   const listener = useMemo(
     () =>
       throttle(() => {
-        handleScroll();
+        if(node.current) handleScroll();
       }, 50),
     [handleScroll]
   );
