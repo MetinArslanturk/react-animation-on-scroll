@@ -134,7 +134,7 @@ var AnimationOnScroll = function AnimationOnScroll(_ref) {
   }, [isAboveScreen, isBelowScreen]);
   var getVisibility = (0, _react.useCallback)(function () {
     var elementTop = getElementTop(node.current) - getElementTop(scrollableParentRef.current);
-    var elementBottom = elementTop + node.current.clientHeight;
+    var elementBottom = elementTop + (node.current && node.current.clientHeight);
     return {
       inViewport: inViewport(elementTop, elementBottom),
       onScreen: onScreen(elementTop, elementBottom)
