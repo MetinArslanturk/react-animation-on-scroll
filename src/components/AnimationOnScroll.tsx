@@ -156,7 +156,7 @@ export const AnimationOnScroll = ({
   const getVisibility = useCallback(() => {
     const elementTop =
       getElementTop(node.current) - getElementTop(scrollableParentRef.current);
-    const elementBottom = elementTop + node.current.clientHeight;
+    const elementBottom = elementTop + (node.current && node.current.clientHeight);
 
     return {
       inViewport: inViewport(elementTop, elementBottom),
